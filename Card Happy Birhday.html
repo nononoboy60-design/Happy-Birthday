@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Love 💖</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    overflow: hidden;
+    color: white;
+}
+
+/* GLASS CARD */
+.card {
+    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.15);
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+/* SLIDE */
+.slide {
+    display: none;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    animation: fade 1s ease;
+}
+
+.active { display: flex; }
+
+@keyframes fade {
+    from {opacity:0; transform:scale(0.95);}
+    to {opacity:1; transform:scale(1);}
+}
+
+/* BUTTON */
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4f81;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #fff;
+}
+
+/* INPUT */
+input {
+    padding: 12px;
+    border-radius: 20px;
+    border: none;
+    text-align: center;
+}
+
+/* MEDIA */
+img, video {
+    width: 260px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+/* HEART */
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {transform: translateY(-10vh);}
+    100% {transform: translateY(110vh);}
+}
+
+/* CONFETTI */
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: white;
+    animation: fall linear infinite;
+}
+
+/* TYPEWRITER */
+#typing {
+    max-width: 600px;
+    line-height: 1.6;
+    white-space: pre-line;
+
+    height: 250px;       /* ⬅️ TAMBAHKAN INI */
+    overflow-y: auto;    /* ⬅️ TAMBAHKAN INI */
+    padding-right: 10px; /* opsional biar ga nabrak */
+}
+
+/* 🎁 GIFT SMOOTH */
+.gift{
+    position:relative;
+    width:150px;
+    height:150px;
+    margin:40px auto;
+    cursor:pointer;
+}
+
+/* BOX */
+.box{
+    width:100%;
+    height:100%;
+    background:linear-gradient(135deg,#ff4f81,#ff7eb3);
+    border-radius:18px;
+    position:relative;
+    transition:0.4s;
+}
+
+/* PITA */
+.box::before{
+    content:"";
+    position:absolute;
+    width:18px;
+    height:100%;
+    background:white;
+    left:50%;
+    transform:translateX(-50%);
+}
+.box::after{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:18px;
+    background:white;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+/* TUTUP */
+.lid{
+    position:absolute;
+    width:110%;
+    height:45px;
+    background:linear-gradient(135deg,#ff7eb3,#ff9ec4);
+    top:-35px;
+    left:-5%;
+    border-radius:12px;
+    transform-origin:bottom center;
+    transition:0.7s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+/* BUKA (ADA BOUNCE) */
+.open .lid{
+    transform:rotate(-120deg) translateY(-20px);
+}
+
+/* BOX IKUT NAIK DIKIT */
+.open .box{
+    transform:translateY(-10px);
+}
+
+/* ISI KADO */
+.surprise{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,20px) scale(0);
+    font-size:20px;
+    opacity:0;
+    transition:0.6s ease;
+
+    color: #fff;
+text-shadow: 
+0 0 5px #fff,
+0 0 10px #ff4f81,
+0 0 20px #ff4f81;
+
+}
+
+/* MUNCUL */
+.open .surprise{
+    transform:translate(-50%,-80px) scale(1.2);
+    opacity:1;
+    animation:pop 0.6s ease;
+}
+
+@keyframes pop{
+    0%{transform:translate(-50%,20px) scale(0);}
+    60%{transform:translate(-50%,-90px) scale(1.4);}
+    100%{transform:translate(-50%,-80px) scale(1.2);}
+}
+
+/* 🎂 CAKE */
+.cake{
+    position:relative;
+    margin:20px auto;
+    width:120px;
+    cursor:pointer;
+}
+
+.layer{
+    height:35px;
+    border-radius:10px;
+    margin:5px 0;
+    animation:floatCake 2s ease-in-out infinite;
+}
+.top{background:#ff9ec4;}
+.middle{background:#ff7eb3;}
+.bottom{background:#ff4f81;}
+
+@keyframes floatCake{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
+}
+
+/* CANDLE */
+.candle{
+    position:absolute;
+    top:-40px;
+    left:50%;
+    transform:translateX(-50%);
+    width:10px;
+    height:40px;
+    background:white;
+    border-radius:5px;
+}
+
+/* FLAME */
+.flame{
+    position:absolute;
+    top:-15px;
+    left:50%;
+    transform:translateX(-50%);
+    width:12px;
+    height:18px;
+    background:gold;
+    border-radius:50%;
+    animation:flicker 0.3s infinite alternate;
+}
+@keyframes flicker{
+    from{transform:translateX(-50%) scale(1);}
+    to{transform:translateX(-50%) scale(1.3);}
+}
+
+/* TEXT DI KUE */
+.cake-text{
+    position:absolute;
+    width:100%;
+    text-align:center;
+    top:20px;
+    font-size:14px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+<source src="c:\Users\lnvip\Music\Rio Clappy - Bunga Abadi (Official Lyric Video).mp3" type="audio/mpeg">
+</audio>
+
+<!-- Slide 1 -->
+<div class="slide active">
+<div class="card">
+<h2>Password 💌</h2>
+<p>Clue: Your Birthday</p>
+<input id="password">
+<button onclick="checkPassword()">Masuk</button>
+</div>
+</div>
+
+<!-- Slides 2–12 (dipersingkat biar fokus fitur premium) -->
+<div class="slide"><div class="card">
+<h2>Haiii Sayangg 💖</h2>
+<img src="e:\Ulang Tahun\From Main Klickpin CF- Uploaded by user - 2f6yGu9vS.gif">
+<button onclick="nextSlide(2)">tap disinii &lt;3</button>
+</div></div>
+
+<div class="slide"><div class="card">
+<h2>Are you ready? 😆</h2>
+<img src="e:\Ulang Tahun\From Main Klickpin CF- tenorcom - 6gxLZYe1F.gif">
+<button onclick="nextSlide(3)">Yess 💖</button>
+<button onclick="alert('Harus pencet yesss 😜')">No</button>
+</div></div>
+
+<div class="slide"><div class="card">
+<h2>Happy Birthday Ke-21 Sayanggg🎉</h2>
+<img src="e:\Ulang Tahun\From Main Klickpin CF- tenorcom - 4x7zntOMF.gif">
+<button onclick="nextSlide(4)">open it</button>
+</div></div>
+
+<div class="slide"><div class="card">
+<h2>I Love You So Much 💖</h2>
+<img src="e:\Ulang Tahun\From Main Klickpin CF- media1tenorcom - 2QmL1DyEI.gif">
+<button onclick="nextSlide(5)">lanjut</button>
+</div></div>
+
+<div class="slide"><div class="card">
+<h2>Terakhir nih 💌</h2>
+<img src="e:\Ulang Tahun\From Main Klickpin CF- tenorcom - 7AyeL69ot.gif">
+<button onclick="nextSlide(6)">❤️</button>
+</div></div>
+
+<div class="slide"><div class="card">
+<img src="e:\Ulang Tahun\WhatsApp Image 2026-03-27 at 12.35.34.jpeg">
+<p>This was our first picture, a moment i'll always remember</p>
+<button onclick="nextSlide(7)">Next</button>
+</div></div>
+
+<div class="slide"><div class="card">
+<img src="e:\Ulang Tahun\WhatsApp Image 2026-03-27 at 12.35.35.jpeg">
+<p>i'm so grateful for every moments we shared since then</p>
+<button onclick="nextSlide(8)">Next</button>
+</div></div>
+
+<div class="slide"><div class="card">
+<img src="e:\Ulang Tahun\WhatsApp Image 2026-03-27 at 12.37.25.jpeg">
+<p>Thank you for being part of my days and making them feel special 💖</p>
+<button onclick="nextSlide(9)">Next</button>
+</div></div>
+
+<div class="slide"><div class="card">
+<img src="e:\Ulang Tahun\WhatsApp Image 2026-03-27 at 12.38.07.jpeg">
+<p>i hope we keep creating memories, big and small, together 💞</p>
+<button onclick="nextSlide(10)">Final 💖</button>
+</div></div>
+
+<div class="slide"><div class="card">
+<h2>Mau lihat kadonya? 🎁🥺</h2>
+<button onclick="nextSlide(11)">Mau 💖</button>
+<button onclick="paksa()">Tidak 😜</button>
+</div></div>
+
+<div class="slide"><div class="card">
+<h2>Special for You 🎁</h2>
+<div class="gift" onclick="openGift()">
+<div class="lid"></div>
+<div class="box"></div>
+<div class="surprise">💖 Hadiahnya Udah Mas Kirim 💖</div>
+</div>
+
+<button onclick="nextSlide(12)">Next</button>
+</div></div>
+
+
+<!-- Slide 13 -->
+<div class="slide">
+<div class="card">
+
+<div class="cake" onclick="blowCandle()">
+    <div class="candle">
+        <div class="flame" id="flame"></div>
+    </div>
+
+    <div class="layer top"></div>
+    <div class="layer middle"></div>
+    <div class="layer bottom"></div>
+</div>
+
+<div id="typing"></div>
+
+</div>
+</div>
+
+<!-- Slide 13 -->
+<div class="slide">
+<div class="card">
+<div id="typing"></div>
+</div>
+</div>
+
+<!-- Slide 13 FINAL -->
+<div class="slide">
+<div class="card">
+
+<div class="cake" onclick="alert('Make a wish 💖')">
+<div class="layer"></div>
+<div class="layer"></div>
+<div class="layer"></div>
+</div>
+
+<div id="typing"></div>
+
+</div>
+</div>
+
+<script>
+let slides = document.querySelectorAll(".slide");
+
+function nextSlide(n){
+    slides.forEach(s => s.classList.remove("active"));
+    slides[n].classList.add("active");
+
+    if(n === 10){
+        startEffects();
+        startTyping();
+    }
+}
+
+function checkPassword(){
+    let pass = document.getElementById("password").value;
+    if(pass === "280305"){
+        document.getElementById("music").play().catch(()=>{});
+        nextSlide(1);
+    } else {
+        alert("Salah 😝");
+    }
+}
+
+/* ❌ PAKSA */
+function paksa(){
+    alert("Harus mau 😤💖");
+    nextSlide(9);
+}
+
+/* 🎁 KADO */
+function openGift(){
+    let gift=document.querySelector(".gift");
+    gift.classList.add("open");
+    gift.style.animation="shake 0.4s";
+}
+
+/* ❤️ EFFECTS */
+function startEffects(){
+    setInterval(()=>{
+        let heart = document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="💖";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.animationDuration=(Math.random()*3+2)+"s";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),5000);
+    },200);
+
+    setInterval(()=>{
+        let c = document.createElement("div");
+        c.className="confetti";
+        c.style.left=Math.random()*100+"vw";
+        c.style.animationDuration=(Math.random()*3+2)+"s";
+        document.body.appendChild(c);
+        setTimeout(()=>c.remove(),5000);
+    },100);
+}
+
+/* 🎂 TIUP LILIN */
+function blowCandle(){
+    let flame=document.getElementById("flame");
+    if(flame){
+        flame.style.display="none";
+        alert("Make a wish sayang 💖✨");
+        startConfetti();
+    }
+}
+
+/* 🎇 CONFETTI */
+function startConfetti(){
+    setInterval(()=>{
+        let c=document.createElement("div");
+        c.className="confetti";
+        c.style.left=Math.random()*100+"vw";
+        c.style.background=`hsl(${Math.random()*360},100%,70%)`;
+        c.style.animationDuration=(Math.random()*3+2)+"s";
+        document.body.appendChild(c);
+        setTimeout(()=>c.remove(),5000);
+    },100);
+}
+
+/* ⌨️ TYPING */
+let text = `happy birthday sayanggkuu 🎂🥳💖
+
+semogaa di umur kamuu yang sekarang inii, sayangg semakinn dewasaa, semakinn kuattt, dan semakinn baikk lagii yaa. semogaa imann sayang jugaa makin kuattt, rajinn ibadahh, selaluu dilindungii sama Allah SWT, diberi kesehatann, panjang umurrr, dan pastinyaa selaluu bahagiaa 🤍✨ aamiin.
+
+yeyeyy akhirnyaa kakak hari ini ulangg tahunn jugaa sayangg 🥺💐 sekarang sayang udahh masuk fasee yang lebiih dewasa. mass percayaa kokk, sayangg bisaa jadii versii terbaikk darii diri sendirii 💗
+
+semangatt teruss yaa buatt ngejarr semuaa keinginann kakak, jangan pernahh takutt gagall yaa sayangg, karenaa mass selaluu ada buatt dukung kakak, supportt kakak, dan nemeninn kakak sebisa mas 🤗💞 jangan capee yaa sayangg, kaloo lelahh ceritaa ke mass yaa 🫂
+
+jadii anakk yang baikk, selaluu sayangg samaa keluargaa, rendahh hatii, dan jangan lupaa buatt selaluu bersyukurr yaa cintaa 💖 semogaa apapunn yang kakak lakuinn harii inii dan harii berikutnyaa selaluu diberii kelancarann dan keselamatann 🤲 aamiin.
+
+maaff yaa sayangg kaloo mass belum bisaa selaluu adaa disampingg kakak setiap kali kakak ulang tahun, insyaallah mas ada rezeki lebih pasti akan datang menemui kakak lagi, walaupun kitaa kepisahh jarakk, tapii percayalah mass selaluu doain sayangg darii jauhh 🤍 semogaa di ulangg tahunn berikutnyaa mass bisaa ada langsung di sampingg sayangg yaa 🥺✨ aamiin.
+
+lopyuuuu banyakk sayanggkuu, cintaakuu, manisskuu, duniaakuu 💕💗💖 sehattt selaluu yaa, panjang umurrr, dan jangan pergii darii akuu yaa 🫂
+
+happy birthday once againn sayangg 💐🎉 muachhh muachhh muachhhh 😘😘😘 peyukk jauhhh 🤗💞`;
+
+let i=0;
+function startTyping(){
+    let el = document.getElementById("typing");
+
+    function type(){
+        if(i < text.length){
+            el.innerHTML += text.charAt(i);
+            i++;
+            el.scrollTop = el.scrollHeight;
+
+            let char = text.charAt(i);
+            el.innerHTML += char;
+            i++;
+            let speed = (char === '.' || char === '\n') ? 300 : Math.random()*80 + 50;
+            setTimeout(type, speed);
+
+        }
+    }
+
+    type();
+}
+</script>
+
+</body>
+</html>
